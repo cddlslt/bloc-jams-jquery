@@ -25,4 +25,16 @@ $( document ).ready(function() {
     const PREVIOUS_SONG = album.songs[PREVIOUS_SONG_INDEX];
     player.playPause(PREVIOUS_SONG);
   });
+
+  $('#time-control input').on('input', function (event) {
+    player.skipTo(event.target.value);
+  });
+
+  setInterval( () => {
+    const CURRENT_TIME = player.getTime();
+    const DURATION = player.getDuration();
+    const PERCENT = (CURRENT_TIME / DURATION) * 100;
+    $('#time-control .current-time').text( CURRENT_TIME );
+    $('#time-control input').val(PERCENT);
+  }, 1000);
 });
