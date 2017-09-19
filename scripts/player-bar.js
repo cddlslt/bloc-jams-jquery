@@ -19,11 +19,13 @@ $( document ).ready(function() {
     if (player.playState !== 'playing') {return; }
 
     const CURRENT_SONG_INDEX = album.songs.indexOf(player.currentlyPlaying);
-    const PREVIOUS_SONG_INDEX = CURRENT_SONG_INDEX - 1;
-    if (CURRENT_SONG_INDEX === 0) {return; }
+    var previousSongIndex = CURRENT_SONG_INDEX - 1;
+    if (CURRENT_SONG_INDEX === 0) {
+      previousSongIndex = album.songs.length - 1;
+     }
 
-    const PREVIOUS_SONG = album.songs[PREVIOUS_SONG_INDEX];
-    player.playPause(PREVIOUS_SONG);
+    var previousSong = album.songs[previousSongIndex];
+    player.playPause(previousSong);
   });
 
   $('#time-control input').on('input', function (event) {
