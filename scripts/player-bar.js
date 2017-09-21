@@ -38,8 +38,8 @@ $( document ).ready(function() {
     const CURRENT_TIME = player.getTime();
     const DURATION = player.getDuration();
     const PERCENT = (CURRENT_TIME / DURATION) * 100;
-    $('#time-control .current-time').text( CURRENT_TIME );
+    $('#time-control .current-time').text( player.prettyTime(CURRENT_TIME) );
     $('#time-control input').val(PERCENT);
-    $('#time-control .total-time').text( DURATION );
+    $('#time-control .total-time').text( player.prettyTime(DURATION) );
   }, 1000);
 });
